@@ -3,6 +3,7 @@ import Hero from './Hero'
 import About from './About'
 import Services from './Services'
 import Faq from './Faq'
+import Footer from './Footer'
 
 
 
@@ -13,6 +14,7 @@ const Landing = () => {
      <About/>
      <Services/>
     <Faq/>
+    <Footer/>
    
     </>
   )

@@ -11,12 +11,16 @@ import {
   IconChevronRight,
   IconCode,
   IconComet,
+  IconHeart,
   IconSearch,
+  IconShare,
   IconShield,
   IconSitemap,
   IconSparkles,
+  IconTarget,
   IconTestPipe,
   IconTools,
+  IconUsersGroup,
   IconWand,
 } from "@tabler/icons-react";
 import ViewportAnimation from "./ViewportAnimation";
@@ -74,7 +78,7 @@ const Card0: () => React.ReactNode = () => {
 
       <div className="w-24 h-24 absolute top-0 left-0 backdrop-blur-sm z-10"></div>
 
-      <div className="text-sm mb-2 flex items-center gap-2 z-20">
+      <div className="text-lg mb-2 flex items-center gap-2 z-20">
         <IconComet size={22} className="text-blue-300" />
         Web Development and designing
       </div>
@@ -266,7 +270,7 @@ const Card1: () => React.ReactNode = () => {
       </div>
       <div className="absolute top-20 left-20 z-10">
         <div className="w-7 h-7 border rounded-full bg-accent/20 backdrop-blur flex items-center justify-center relative overflow-hidden border-border/80 bg-accent/20 backdrop-blur mr-6 mt-4">
-          <IconCode size={14} />
+          <IconShare size={14} />
           <div className="w-2 h-2 absolute top-0 bg-blue-400 blur-md"></div>
         </div>
       </div>
@@ -277,7 +281,7 @@ const Card1: () => React.ReactNode = () => {
       </div>
 
       <div className="h-full"></div>
-      <div className="text-sm mb-2 flex items-center gap-2 z-20">
+      <div className="text-lg mb-2 flex items-center gap-2 z-20">
         Quality is all
       </div>
       <div className="text-xs opacity-70 max-w-lg z-20">
@@ -288,51 +292,47 @@ const Card1: () => React.ReactNode = () => {
 };
 
 const Card2: () => React.ReactNode = () => {
+  // --- Background image style for the social media card ---
+  const socialMediaBackgroundImageStyle = {
+    // **<<< Adjust this path to your new social media image's location**
+    backgroundImage: `url('/sm.png')`, 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
   return (
     <ViewportAnimation
       once={false}
       off={{ opacity: 0, translateY: "20px" }}
       on={{ opacity: 1, translateY: 0, transition: { delay: 0.6 } }}
-      className="w-full p-7 h-72 border rounded-2xl flex flex-col overflow-hidden text-left relative border-white/15 flex flex-col"
-    >
-      <CardLight />
-      <div className="w-full flex items-center justify-center gap-3 p-2">
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-accent/20">
-          <IconSearch size={14} />
-        </div>
-        <IconArrowRightRhombus size={18} className="opacity-50" />
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-accent/20">
-          <IconTools size={14} />
-        </div>
-        <IconArrowRightRhombus size={18} className="opacity-50" />
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-accent/20">
-          <IconCode size={14} />
-        </div>
-        <div></div>
-      </div>
-      <div className="w-full flex items-center justify-end gap-3 pr-10">
-        <IconArrowDownRhombus size={18} className="opacity-50 mr-1" />
-      </div>
-      <div className="w-full flex items-center justify-center gap-3 p-2">
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-accent/20 opacity-0">
-          <IconSearch size={14} />
-        </div>
-        <IconArrowLeftRhombus size={18} className="opacity-0" />
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-blue-400/10 border-blue-400/60 text-blue-300">
-          <IconBrandGithub size={14} />
-        </div>
-        <IconArrowLeftRhombus size={18} className="opacity-50" />
-        <div className="w-8 h-8 flex items-center justify-center border rounded-xl bg-accent/20">
-          <IconTestPipe size={14} />
-        </div>
-        <div></div>
-      </div>
+      
+      // --- Apply background style here ---
+      style={socialMediaBackgroundImageStyle}
 
-      <div className="h-full"></div>
-      <div className="text-sm mb-2 flex items-center gap-2 z-20">
+      // --- All Tailwind classes for overlay (same as Card3) ---
+      className="w-full p-7 h-72 border rounded-2xl flex flex-col overflow-hidden text-left border-white/15 flex flex-col 
+                 relative z-0 
+                 before:content-[''] 
+                 before:absolute 
+                 before:inset-0 
+                 before:bg-black/65 
+                 before:z-10"
+    >
+      {/* --- All children now need `relative` and `z-20` --- */}
+
+      <CardLight /> 
+      {/* The original icon cluster div is removed, as the background image replaces its visual role */}
+      {/* <div className="w-full h-full  flex items-center justify-center gap-3 p-2">...</div> */}
+      
+      {/* The h-full div might still be useful for spacing if you want the text at the bottom,
+          but if you prefer the text higher, you could adjust or remove it. */}
+      <div className="h-full relative z-20"></div> 
+
+      <div className="text-lg mb-2 flex items-center gap-2 relative z-20">
         Social Media and Marketing
       </div>
-      <div className="text-xs opacity-70 max-w-lg z-20">
+      <div className="text-xs opacity-70 max-w-lg relative z-20">
         We help you grow your brand's presence across social media platforms,
         engage with your audience, and drive targeted traffic to your product.
       </div>
@@ -341,58 +341,70 @@ const Card2: () => React.ReactNode = () => {
 };
 
 const Card3: () => React.ReactNode = () => {
+  // --- This is the only inline style you need ---
+  const backgroundImageStyle = {
+    // **<<< Adjust this path to your image's location**
+    backgroundImage: `url('/cam.png')`, 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
   return (
     <ViewportAnimation
       once={false}
       off={{ opacity: 0, translateY: "20px" }}
       on={{ opacity: 1, translateY: 0, transition: { delay: 0.8 } }}
-      className="w-full p-7 h-72 border rounded-2xl flex flex-col overflow-hidden text-left relative border-white/15 flex flex-col"
+      
+      // --- Apply background style here ---
+      style={backgroundImageStyle}
+
+      // --- All Tailwind classes for overlay ---
+      className="w-full p-7 h-72 border rounded-2xl flex flex-col overflow-hidden text-left border-white/15 flex flex-col 
+                 relative z-0 
+                 before:content-[''] 
+                 before:absolute 
+                 before:inset-0 
+                 before:bg-black/65 
+                 before:z-10"
     >
-      <CardLight />
+      {/* --- All children now need `relative` and `z-20` --- */}
 
-      {/* <div className="absolute top-0 left-0 w-full flex flex-col p-6 pl-14 gap-3 text-xs opacity-40">
-        <div className="font-semibold">Your MVP tech stack</div>
-        <div className="">
-          - Next.js 14 with App router
-          <br /> - Tailwindcss
-          <br /> ...
-        </div>
-      </div> */}
+      <CardLight /> 
+      {/* (Assuming CardLight doesn't have its own conflicting z-index) */}
 
-      <div className="h-full"></div>
+      <div className="h-full relative z-20"></div>
 
-      <div
-        className="w-full p-3 pt-4 pb-4 border-l-1 rounded-none bg-background/90 backdrop-blur-lg relative overflow-hidden flex items-center gap-3 border-blue-300/60 mb-6"
+      {/* <div
+        className="w-full p-3 pt-4 pb-4 border-l-1 rounded-none bg-background/90 backdrop-blur-lg relative overflow-hidden flex items-center gap-3 border-blue-300/60 mb-6 relative z-20"
         style={{
           boxShadow: "0px 20px 14px 4px rgba(0, 0, 0, .50)",
         }}
       >
         <div className="absolute w-full h-24 bg-white/5 opacity-50 blur-2xl"></div>
-        {/* <input
-          autoComplete="off"
-          placeholder={`Ask AI to change the tech stack..`}
-          className="w-full bg-transparent outline-none resize-none text-xs z-30 disabled:opacity-60 disabled:cursor-not-allowed"
-        /> */}
-        <div className="flex items-center justify-end gap-2">
+        {/* <input ... /> */}
+        {/* <div className="flex items-center justify-end gap-2">
           <IconArrowUpRight
             className="opacity-70 group-hover:opacity-100"
             size={15}
           />
         </div>
-      </div>
+      </div> */} 
 
-      <div className="absolute bottom-24 left-0 w-full"></div>
+      <div className="absolute bottom-24 left-0 w-full relative z-20"></div>
 
-      <div className="text-sm mb-2 flex items-center gap-2 z-20">
+      <div className="text-lg mb-2 flex items-center gap-2 relative z-20">
         Personalized Photoshoots
       </div>
-      <div className="text-xs opacity-70 max-w-lg z-20">
+      <div className="text-xs opacity-70 max-w-lg relative z-20">
         We create stunning visuals that capture your brand's essence and
         captivate your audience.
       </div>
     </ViewportAnimation>
   );
 };
+
+
 
 const Card4: () => React.ReactNode = () => {
   return (

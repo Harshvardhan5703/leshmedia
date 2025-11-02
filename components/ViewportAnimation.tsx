@@ -6,20 +6,16 @@ import {
   useAnimation,
   Variant,
   Transition,
-  ForwardRefComponent,
+  HTMLMotionProps,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-interface Props {
+type Props = HTMLMotionProps<"div"> & {
   on?: Variant;
   off?: Variant;
-  children: React.ReactNode;
   threshold?: number;
-  transition?: Transition;
   once?: boolean;
-  className?: string;
-  id?: string;
-}
+};
 
 export default function ViewportAnimation({
   on,
@@ -42,7 +38,7 @@ export default function ViewportAnimation({
     } else if (!inView && !used) {
       controls.start("off");
     }
-  }, [controls, inView]);
+  }, [controls, inView, used, once]);
 
   const variants = { on: on ?? {}, off: off ?? {} };
 
